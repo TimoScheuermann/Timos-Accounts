@@ -1,4 +1,4 @@
-# projectname
+# timosaccounts
 
 ## Project setup
 
