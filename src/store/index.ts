@@ -1,22 +1,32 @@
 /* eslint-disable */
+import { User } from '@/utils/models';
 import Vue from 'vue';
 import Vuex from 'vuex';
 
 Vue.use(Vuex);
 const store = new Vuex.Store({
   state: {
-    a: 1,
+    user: {},
+    validated: false
   },
   getters: {
-    a: (state: any): number => {
-      return state.a;
+    valid: (state: any): boolean => {
+      return state.validated;
     },
+    user: (state: any): User => {
+      return state.user;
+    }
   },
   mutations: {
-    updateA(state: any, a: number) {
-      state.a = a;
+    validate(state: any, user: User) {
+      state.validated = true;
+      state.user = user;
     },
-  },
+    logout(state: any) {
+      state.validated = false;
+      state.user = undefined;
+    }
+  }
 });
 
 export default store;

@@ -1,16 +1,26 @@
 <template>
-  <div class="">
+  <div class="accounts-timos-designs">
+    <ta-navbar />
     <router-view />
   </div>
 </template>
 
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator';
+import { validateAndAutoLogin } from '@/utils/authService';
+import TimosAccountsNavbar from '@/components/TA-Navbar.vue';
 
-@Component
-export default class App extends Vue {}
+@Component({
+  components: {
+    'ta-navbar': TimosAccountsNavbar
+  }
+})
+export default class App extends Vue {
+  mounted() {
+    validateAndAutoLogin();
+  }
+}
 </script>
-
 <style lang="scss">
 html {
   font-family: -apple-system, BlinkMacSystemFont, SF Pro Display, Segoe UI,
@@ -22,8 +32,8 @@ html {
 }
 
 body {
-  background: $background;
-  color: $color;
+  background: $background_dark;
+  color: $color_dark;
   margin: 0;
 }
 [content] {

@@ -2,8 +2,8 @@
 node_modules
 /dist
 _defaultComp
-
 # local env files
+.env
 .env.local
 .env.*.local
 

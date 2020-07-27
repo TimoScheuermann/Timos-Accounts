@@ -18,20 +18,24 @@ router.beforeEach((to: Route, from: Route, next: Function) => {
   const title = getTitle(to);
   document.title = title;
 
-  const gt = document.querySelector('meta[name="title"]');
-  if (gt) gt.setAttribute('content', title);
+  if (to.name !== 'home' && !store.getters.valid) {
+    next({ name: 'home' });
+  } else {
+    const gt = document.querySelector('meta[name="title"]');
+    if (gt) gt.setAttribute('content', title);
 
-  const twitter = document.querySelector('meta[property="twitter:title"]');
-  if (twitter) twitter.setAttribute('content', title);
+    const twitter = document.querySelector('meta[property="twitter:title"]');
+    if (twitter) twitter.setAttribute('content', title);
 
-  const og = document.querySelector('meta[property="og:title"]');
-  if (og) og.setAttribute('content', title);
+    const og = document.querySelector('meta[property="og:title"]');
+    if (og) og.setAttribute('content', title);
 
-  next();
+    next();
+  }
 });
 
 new Vue({
   router,
   store,
-  render: (h) => h(App),
+  render: h => h(App)
 }).$mount('#app');
