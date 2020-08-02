@@ -113,8 +113,7 @@ export default class Home extends Vue {
   public signIn(service = 'google'): void {
     if (process.env.VUE_APP_LOCAL)
       window.location.replace('http://localhost:3000/auth/' + service);
-    else
-      window.location.replace('http://api.timos.design:3000/auth/' + service);
+    else window.location.replace('http://api.timos.design/auth/' + service);
   }
 
   get user() {
