@@ -21,13 +21,13 @@
         />
         <tc-button
           @click="signIn('google')"
-          icon="assets/google.svg"
+          icon="google"
           name="Sign in with Google"
           tccolor="paragraph"
         />
         <tc-button
           @click="signIn('steam')"
-          icon="assets/steam.svg"
+          icon="steam"
           name="Sign in with Steam"
           tccolor="paragraph"
         />
