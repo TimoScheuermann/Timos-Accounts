@@ -65,11 +65,12 @@
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator';
 import { User } from '../utils/models';
-import { logOut } from '../utils/authService';
+import { signOutTAUser } from 'timos-accounts';
+
 @Component
 export default class Settings extends Vue {
   public signOut() {
-    logOut();
+    signOutTAUser();
     this.$router.push({ name: 'home' });
   }
 
