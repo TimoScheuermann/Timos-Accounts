@@ -7,8 +7,9 @@
 
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator';
-import { validateAndAutoLogin } from '@/utils/authService';
 import TimosAccountsNavbar from '@/components/TA-Navbar.vue';
+import { persistLogin, verfiyTAUser, getTAUser } from 'timos-accounts';
+import { getToken } from 'timos-accounts/dist/jwt-helper';
 
 @Component({
   components: {
@@ -16,8 +17,24 @@ import TimosAccountsNavbar from '@/components/TA-Navbar.vue';
   }
 })
 export default class App extends Vue {
-  mounted() {
-    validateAndAutoLogin();
+  async mounted() {
+    const possibleRedirect = this.$route.query.redirect as string;
+    if (possibleRedirect)
+      localStorage.setItem('timos-designs-redirect', possibleRedirect);
+
+    const possibleToken = this.$route.query.taToken as string;
+    if (possibleToken) {
+      persistLogin(possibleToken);
+      const redirect = localStorage.getItem('timos-designs-redirect');
+      if (redirect) {
+        localStorage.removeItem('timos-designs-redirect');
+        window.location.replace(`${redirect}?taToken=${getToken()}`);
+      }
+    }
+
+    if (await verfiyTAUser()) {
+      this.$store.commit('validate', getTAUser());
+    }
   }
 }
 </script>

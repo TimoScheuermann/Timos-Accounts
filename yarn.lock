@@ -921,6 +921,11 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-14.0.23.tgz#676fa0883450ed9da0bb24156213636290892806"
   integrity sha512-Z4U8yDAl5TFkmYsZdFPdjeMa57NOvnaf1tljHzhouaPEp7LCj2JKkejpI1ODviIAQuW4CcQmxkQ77rnLsOOoKw==
 
+"@types/node@^14.0.27":
+  version "14.0.27"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-14.0.27.tgz#a151873af5a5e851b51b3b065c9e63390a9e0eb1"
+  integrity sha512-kVrqXhbclHNHGu9ztnAwSncIgJv/FaxmzXJvGXNdcCpV1b8u1/Mi6z6m0vwy0LzKeXFTPLH0NzwmoJ3fNCIq0g==
+
 "@types/normalize-package-data@^2.4.0":
   version "2.4.0"
   resolved "https://registry.yarnpkg.com/@types/normalize-package-data/-/normalize-package-data-2.4.0.tgz#e486d0d97396d79beedd0a6e33f4534ff6b4973e"
@@ -8310,6 +8315,13 @@ timers-browserify@^2.0.4:
   integrity sha512-60aV6sgJ5YEbzUdn9c8kYGIqOubPoUdqQCul3SBAsRCZ40s6Y5cMcrW4dt3/k/EsbLVJNl9n6Vz3fTc+k2GeKQ==
   dependencies:
     setimmediate "^1.0.4"
+
+timos-accounts@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/timos-accounts/-/timos-accounts-0.1.0.tgz#9f0b8982d0c5b39ff89013eec4def4d74b81a458"
+  integrity sha512-3uP0lQd1q7582AqYt2FjuUNOOd9YyHts4hJXyAxESCfeGm2jLmKLVdHxLyPjXWXIYXxBxxwSZPqNdZnlB/MKQQ==
+  dependencies:
+    "@types/node" "^14.0.27"
 
 timsort@^0.3.0:
   version "0.3.0"

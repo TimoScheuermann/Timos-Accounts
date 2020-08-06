@@ -1,4 +1,5 @@
 /* eslint-disable */
+import router from '@/router';
 import { User } from '@/utils/models';
 import Vue from 'vue';
 import Vuex from 'vuex';
@@ -21,6 +22,9 @@ const store = new Vuex.Store({
     validate(state: any, user: User) {
       state.validated = true;
       state.user = user;
+      if (router.currentRoute.name !== 'settings') {
+        router.push({ name: 'settings' });
+      }
     },
     logout(state: any) {
       state.validated = false;
