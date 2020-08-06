@@ -1,6 +1,6 @@
 <template>
   <div class="accounts-account">
-    <tc-hero>
+    <tc-hero height="300">
       <img
         src="https://images.unsplash.com/photo-1576790535255-09ae1ca64ed1?q=30"
         slot="background"
@@ -8,7 +8,7 @@
       />
       <tl-flow horizontal="space-around">
         <tc-avatar :src="user.avatar" />
-        <tl-flow flow="column" vertical="start">
+        <tl-flow flow="column" n vertical="start">
           <div class="name">{{ user.givenName }} {{ user.familyName }}</div>
           <div class="email">{{ user.email }}</div>
         </tl-flow>
@@ -88,10 +88,12 @@ export default class Settings extends Vue {
     margin: 0 50px;
   }
   .name {
+    margin-top: 10px;
     font-size: 1.5em;
     font-weight: bold;
   }
   .email {
+    margin-bottom: 10px;
     font-weight: 500;
   }
 }
