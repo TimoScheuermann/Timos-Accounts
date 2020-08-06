@@ -71,6 +71,7 @@ import { signOutTAUser } from 'timos-accounts';
 export default class Settings extends Vue {
   public signOut() {
     signOutTAUser();
+    this.$store.commit('logout');
     this.$router.push({ name: 'home' });
   }
 

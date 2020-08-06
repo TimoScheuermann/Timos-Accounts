@@ -18,23 +18,25 @@ import { getToken } from 'timos-accounts/dist/jwt-helper';
 })
 export default class App extends Vue {
   async mounted() {
-    const possibleRedirect = this.$route.query.redirect as string;
-    if (possibleRedirect)
-      localStorage.setItem('timos-designs-redirect', possibleRedirect);
+    this.$nextTick(async () => {
+      const possibleRedirect = this.$route.query.redirect as string;
+      if (possibleRedirect)
+        localStorage.setItem('timos-designs-redirect', possibleRedirect);
 
-    const possibleToken = this.$route.query.taToken as string;
-    if (possibleToken) {
-      persistLogin(possibleToken);
-      const redirect = localStorage.getItem('timos-designs-redirect');
-      if (redirect) {
-        localStorage.removeItem('timos-designs-redirect');
-        window.location.replace(`${redirect}?taToken=${getToken()}`);
+      const possibleToken = this.$route.query.taToken as string;
+      if (possibleToken) {
+        persistLogin(possibleToken);
+        const redirect = localStorage.getItem('timos-designs-redirect');
+        if (redirect) {
+          localStorage.removeItem('timos-designs-redirect');
+          window.location.replace(`${redirect}?taToken=${getToken()}`);
+        }
       }
-    }
 
-    if (await verfiyTAUser()) {
-      this.$store.commit('validate', getTAUser());
-    }
+      if (await verfiyTAUser()) {
+        this.$store.commit('validate', getTAUser());
+      }
+    });
   }
 }
 </script>
