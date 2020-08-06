@@ -37,15 +37,18 @@ router.beforeEach(async (to: Route, from: Route, next: Function) => {
   const possibleToken = to.query.taToken as string;
   if (possibleToken) {
     persistLogin(possibleToken);
-    const redirect = localStorage.getItem('timos-designs-redirect');
-    if (redirect && (await verfiyTAUser())) {
-      localStorage.removeItem('timos-designs-redirect');
-      window.location.replace(`${redirect}?taToken=${getToken()}`);
-    }
   }
 
   if (!store.getters.valid && (await verfiyTAUser())) {
     store.commit('validate', getTAUser());
+
+    const redirect = localStorage.getItem('timos-designs-redirect');
+    if (redirect && (await verfiyTAUser())) {
+      localStorage.removeItem('timos-designs-redirect');
+      window.location.replace(`${redirect}?taToken=${getToken()}`);
+      return;
+    }
+
     next({ name: 'settings' });
     return;
   }
