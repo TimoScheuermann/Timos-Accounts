@@ -1,5 +1,5 @@
 export interface User {
-  readonly _id?: string;
+  readonly _id: string;
   readonly googleId?: number;
   readonly givenName: string;
   readonly familyName: string;
