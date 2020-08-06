@@ -32,25 +32,22 @@ router.beforeEach(async (to: Route, from: Route, next: Function) => {
   const possibleRedirect = to.query.redirect as string;
   if (possibleRedirect) {
     localStorage.setItem('timos-designs-redirect', possibleRedirect);
-    next({ name: to.name });
-    return;
   }
 
   const possibleToken = to.query.taToken as string;
   if (possibleToken) {
     persistLogin(possibleToken);
     const redirect = localStorage.getItem('timos-designs-redirect');
-    if (redirect) {
+    if (redirect && (await verfiyTAUser())) {
       localStorage.removeItem('timos-designs-redirect');
       window.location.replace(`${redirect}?taToken=${getToken()}`);
-      return;
     }
-    next({ name: to.name });
-    return;
   }
 
-  if (await verfiyTAUser()) {
+  if (!store.getters.valid && (await verfiyTAUser())) {
     store.commit('validate', getTAUser());
+    next({ name: 'settings' });
+    return;
   }
 
   if (to.name !== 'home' && !store.getters.valid) {
