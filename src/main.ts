@@ -11,7 +11,6 @@ import { Route } from 'vue-router';
 import './registerServiceWorker';
 
 Vue.config.productionTip = false;
-
 for (const component in TCComponents) {
   Vue.component(component, TCComponents[component]);
 }

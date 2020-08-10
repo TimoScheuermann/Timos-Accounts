@@ -17,19 +17,22 @@
           @click="signIn('github')"
           icon="github"
           name="Sign in with GitHub"
-          tccolor="paragraph"
+          color="#000"
+          tfbackground="paragraph"
         />
         <tc-button
           @click="signIn('google')"
           icon="google"
           name="Sign in with Google"
-          tccolor="paragraph"
+          color="#000"
+          tfbackground="paragraph"
         />
         <tc-button
           @click="signIn('steam')"
           icon="steam"
           name="Sign in with Steam"
-          tccolor="paragraph"
+          color="#000"
+          tfbackground="paragraph"
         />
       </tc-card>
       <tc-card
@@ -43,9 +46,10 @@
         {{ user.provider }}
         <tc-button
           name="View Settings"
-          color="success"
+          variant="opaque"
+          tfbackground="success"
           icon="settings"
-          :to="{ name: 'settings' }"
+          routeName="settings"
         />
       </tc-card>
     </tc-hero>

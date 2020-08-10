@@ -12,7 +12,12 @@
           <div class="name">{{ user.givenName }} {{ user.familyName }}</div>
           <div class="email">{{ user.email }}</div>
         </tl-flow>
-        <tc-button tccolor="paragraph" name="Sign out" @click="signOut()" />
+        <tc-button
+          tfbackground="paragraph"
+          color="#000"
+          name="Sign out"
+          @click="signOut()"
+        />
       </tl-flow>
     </tc-hero>
     <!-- {{ user }} -->
