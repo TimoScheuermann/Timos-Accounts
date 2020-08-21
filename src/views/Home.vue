@@ -1,18 +1,20 @@
 <template>
   <div class="account-home">
-    <tc-hero height="500">
+    <tc-hero :dark="true">
       <img
-        src="https://images.unsplash.com/photo-1576790535255-09ae1ca64ed1?q=30"
+        src="https://images.unsplash.com/photo-1597910037383-d79beb2b39c3?q=30"
         slot="background"
         alt=""
       />
-      <tc-card
-        v-if="!$store.getters.valid"
-        title="Timo's Designs Account"
-        :dark="true"
-        :frosted="true"
-        :rounded="true"
-      >
+      <h1>Timo's Accounts</h1>
+      <div>One account for everything</div>
+    </tc-hero>
+    <div class="icon">
+      <tc-avatar src="/pwa/maskIcon.svg" size="tiny" border="square" />
+    </div>
+    <div content="">
+      <h1>Login</h1>
+      <tl-flow flow="column" class="buttons">
         <tc-button
           @click="signIn('github')"
           icon="github"
@@ -34,44 +36,30 @@
           color="#000"
           tfbackground="paragraph"
         />
-      </tc-card>
-      <tc-card
-        v-else
-        title="Welcome back!"
-        :dark="true"
-        rounded="true"
-        :frosted="true"
-      >
-        Currently signed in as {{ user.givenName }} {{ user.familyName }} via
-        {{ user.provider }}
-        <tc-button
-          name="View Settings"
-          variant="opaque"
-          tfbackground="success"
-          icon="settings"
-          routeName="settings"
-        />
-      </tc-card>
-    </tc-hero>
-    <div content>
-      <ta-big-heading
-        title="Timo's Accounts"
-        subtitle="One account for everything"
-      />
-      <tl-flow flow="column">
-        <p>
-          A single account grands you access to every feature on timos.design.
-          From writing comments to news, suggesting changes to tccomponents or
-          requesting new icons
-        </p>
       </tl-flow>
-      <tl-flow>
-        <tc-tooltip v-for="a in accountsFor" :key="a.name" :tooltip="a.name">
-          <a :href="a.href" target="_blank">
+      <tc-divider :dark="true" />
+
+      <tl-grid>
+        <div>
+          <h1>About</h1>
+
+          <span>
+            A single account grands you access to every feature on timos.design.
+            From writing comments to news, suggesting changes to tccomponents or
+            requesting new icons
+          </span>
+        </div>
+        <tl-flow horizontal="space-between">
+          <a
+            v-for="a in accountsFor"
+            :key="a.name"
+            :href="a.href"
+            target="_blank"
+          >
             <tc-avatar size="tiny" border="rounded" :src="a.src" />
           </a>
-        </tc-tooltip>
-      </tl-flow>
+        </tl-flow>
+      </tl-grid>
     </div>
   </div>
 </template>
@@ -88,27 +76,22 @@ import TimosAccountsBigHeading from '@/components/TA-BigHeading.vue';
 export default class Home extends Vue {
   public accountsFor = [
     {
-      name: "Timo's Icons",
       src: 'https://icons.timos.design/pwa/splash/manifest-icon-512.jpg',
       href: 'https://icons.timos.design/'
     },
     {
-      name: 'TC Components',
       src: 'https://components.timos.design/pwa/splash/manifest-icon-512.jpg',
       href: 'https://components.timos.design/'
     },
     {
-      name: "Timo's Newsroom",
       src: 'https://newsroom.timos.design/pwa/splash/manifest-icon-512.jpg',
       href: 'https://newsroom.timos.design/'
     },
     {
-      name: 'Portfolio',
       src: 'https://portfolio.timos.design/pwa/splash/manifest-icon-512.jpg',
       href: 'https://portfolio.timos.design/'
     },
     {
-      name: "Timo's Accounts",
       src: 'pwa/splash/manifest-icon-512.jpg',
       href: '/'
     }
@@ -119,41 +102,43 @@ export default class Home extends Vue {
       window.location.replace('http://localhost:3000/auth/' + service);
     else window.location.replace('https://api.timos.design/auth/' + service);
   }
-
-  get user() {
-    return this.$store.getters.user;
-  }
 }
 </script>
-<style lang="scss">
-img {
-  filter: none !important;
-}
-</style>
 <style lang="scss" scoped>
-[content] {
-  margin-top: 30px;
-}
-.tl-flow {
-  margin-top: 20px;
-  .tc-avatar {
-    margin: 10px;
-  }
-  h1,
-  p {
+.account-home {
+  position: relative;
+
+  .tc-hero {
+    height: 90vw;
+    max-height: 350px;
     text-align: center;
-    margin: 0;
-    max-width: 80vw;
-    width: 450px;
+    h1 {
+      margin: 0;
+    }
   }
-  h1 {
-    margin-bottom: 10px;
+  .icon {
+    background: $background_dark;
+    padding: 10px;
+    border-top-left-radius: 10px;
+    position: absolute;
+    right: 0;
+    transform: translateY(-50%);
   }
-}
-.tc-card {
-  .tc-button {
-    display: flex;
-    margin: 10px 0;
+  .buttons {
+    .tc-button {
+      padding: 7.5px;
+      margin-bottom: 10px;
+      width: 80vw;
+      max-width: 400px;
+    }
+  }
+  .tc-divider {
+    margin-top: 20px;
+  }
+  .tl-grid {
+    a {
+      margin: 0 5px;
+    }
   }
 }
 </style>

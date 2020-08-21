@@ -52,9 +52,13 @@ router.beforeEach(async (to: Route, from: Route, next: Function) => {
     return;
   }
 
-  if (to.name !== 'home' && !store.getters.valid) {
+  if (to.name !== 'settings' && store.getters.valid) {
+    // cancel navigation
+  } else if (to.name !== 'home' && !store.getters.valid) {
     next({ name: 'home' });
-  } else next();
+  } else {
+    next();
+  }
 });
 
 new Vue({
