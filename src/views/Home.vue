@@ -10,7 +10,7 @@
       <div>One account for everything</div>
     </tc-hero>
     <div class="icon">
-      <tc-avatar src="/pwa/maskIcon.svg" size="tiny" border="square" />
+      <i class="ti-timos-accounts" />
     </div>
     <div content="">
       <h1>Login</h1>
@@ -76,23 +76,23 @@ import TimosAccountsBigHeading from '@/components/TA-BigHeading.vue';
 export default class Home extends Vue {
   public accountsFor = [
     {
-      src: 'https://icons.timos.design/pwa/splash/manifest-icon-512.jpg',
+      src: 'https://icons.timos.design/pwa/splash/manifest-icon-512.png',
       href: 'https://icons.timos.design/'
     },
     {
-      src: 'https://components.timos.design/pwa/splash/manifest-icon-512.jpg',
+      src: 'https://components.timos.design/pwa/splash/manifest-icon-512.png',
       href: 'https://components.timos.design/'
     },
     {
-      src: 'https://newsroom.timos.design/pwa/splash/manifest-icon-512.jpg',
+      src: 'https://newsroom.timos.design/pwa/splash/manifest-icon-512.png',
       href: 'https://newsroom.timos.design/'
     },
     {
-      src: 'https://portfolio.timos.design/pwa/splash/manifest-icon-512.jpg',
+      src: 'https://portfolio.timos.design/pwa/splash/manifest-icon-512.png',
       href: 'https://portfolio.timos.design/'
     },
     {
-      src: 'pwa/splash/manifest-icon-512.jpg',
+      src: 'pwa/splash/manifest-icon-512.png',
       href: '/'
     }
   ];
@@ -123,6 +123,7 @@ export default class Home extends Vue {
     position: absolute;
     right: 0;
     transform: translateY(-50%);
+    font-size: 50px;
   }
   .buttons {
     .tc-button {

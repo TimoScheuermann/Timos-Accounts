@@ -2,7 +2,7 @@
   <tc-navbar :dark="true">
     <div @click="goHome()" class="logo" slot="logo">
       <tl-flow>
-        <img src="/pwa/maskIcon.svg" alt="" />
+        <i class="ti-timos-accounts" />
         <b>Timo's Accounts</b>
       </tl-flow>
     </div>
@@ -27,8 +27,8 @@ export default class TimosAccountsNavbar extends Vue {
 .tc-navbar {
   .logo {
     cursor: pointer;
-    img {
-      max-height: 30px;
+    i {
+      font-size: 24px;
       margin-right: 10px;
     }
   }
